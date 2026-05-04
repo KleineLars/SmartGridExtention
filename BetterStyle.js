@@ -32,7 +32,6 @@ chrome.storage.sync.get({
     if (document.getElementById("quickSettingsButton")) return;
     if (items.theme === "custom") setStyle(items.colorbg, items.colorte, items.colortb, items.colortt);
     
-    // Refresh proof: blijf de badge forceren tijdens het laden
     let attempts = 0;
     const force = setInterval(() => {
         updateBadge(items.fakeMsgCount);

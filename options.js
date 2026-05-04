@@ -7,7 +7,6 @@ function showStatus(message) {
 }
 
 $(function () {
-    // Navigatie
     $('.nav-item').click(function() {
         $('.nav-item').removeClass('active');
         $(this).addClass('active');
@@ -21,7 +20,6 @@ $(function () {
         $('#page-home').addClass('active');
     });
 
-    // Inladen
     chrome.storage.sync.get({ theme: 'light', colortb: '#ff6600' }, function (items) {
         $('#theme').val(items.theme);
         $('#colortb').val(items.colortb);
@@ -29,19 +27,16 @@ $(function () {
         if(items.theme === 'custom') $('#colors').show();
     });
 
-    // OPSLAAN LOGICA
     $('#save').click(function() {
         const selectedTheme = $('#theme').val();
         const customColor = $('#colortb').val();
         let settings = { theme: selectedTheme, colortb: customColor };
 
         if (selectedTheme === 'custom') {
-            // FIX: Alleen topbar kleur, rest blijft wit
             settings.colorbg = '#FFFFFF';
             settings.colorte = '#262626';
             settings.colortt = '#FFFFFF';
         } else {
-            // Automatische stand gebaseerd op browser
             const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
             if (isDarkMode) {
                 settings.colorbg = '#0a0a0a';
@@ -66,7 +61,6 @@ $(function () {
 
     $('#theme').change(() => $('#theme').val() === 'custom' ? $('#colors').fadeIn() : $('#colors').fadeOut());
 
-    // Fake messages
     $('#fake-msg').click(function() {
         if (countInterval) clearInterval(countInterval);
         const max = parseInt($('#max-msgs').val()) || 10;

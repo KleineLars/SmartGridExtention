@@ -1,6 +1,5 @@
 const sidebar_selector = ".sidebar-results>:first-child";
 
-// --- OBSERVERS ---
 let wideToolbarCallback = function (mutationsList, _) {
   for (let mutation of mutationsList) {
     if (mutation.type == 'childList' && mutation.removedNodes.length != 0) {
@@ -30,7 +29,6 @@ function totalToStr(total_numerator, total_denominator) {
   return (Math.round(total_numerator / total_denominator * 1000) / 10).toString() + '%';
 }
 
-// --- QUOTE LOGICA ---
 const quotes = {
   bad: [
     "Ai, dit ziet er niet best uit. Tijd om die boeken eens echt open te slaan!",
@@ -75,7 +73,6 @@ function addButton() {
   $(sidebar_selector).append(btn);
 }
 
-// --- RAPPORT LOGICA ---
 function showReport(periodName, data_source) {
     $(".report-overlay").remove(); 
     let reportWindow = $("<div id='report-content'/>").addClass("report-overlay");
@@ -139,7 +136,6 @@ function showReport(periodName, data_source) {
     $("body").append(reportWindow);
 }
 
-// --- CORE LOGICA ---
 function generateGridContent(name, data_source) {
     let total_n_period = 0;
     let total_d_period = 0;
@@ -348,7 +344,6 @@ function onLoad() {
 
 function openGrid() { $("#modal-content, #modal-background").addClass("active"); }
 
-// --- SNELTOETSEN ---
 $(document).keydown(function(e) {
     if (e.keyCode === 27) { // ESC
         if ($("#modal-content").hasClass("active")) {
