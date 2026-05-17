@@ -17,7 +17,6 @@
             --card-bg: rgba(245, 245, 245, 0.4);
             --glass-border: rgba(0, 0, 0, 0.05);
             --liquid-shadow: inset 0 2px 5px rgba(255,255,255,0.5), 0 5px 15px rgba(0,0,0,0.05);
-            --cta-gradient: linear-gradient(-45deg, #ff6600, #ff9e00, #ff6600);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -29,14 +28,7 @@
                 --card-bg: rgba(22, 22, 22, 0.4);
                 --glass-border: rgba(255, 255, 255, 0.1);
                 --liquid-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 10px 20px rgba(0,0,0,0.3);
-                --cta-gradient: linear-gradient(-45deg, #3b82f6, #2dd4bf, #3b82f6);
             }
-        }
-
-        @keyframes liquidFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         body {
@@ -59,7 +51,6 @@
             backdrop-filter: blur(10px);
         }
 
-        /* AANPASSING HIER: text-align center toegevoegd */
         .logo-box {
             font-weight: 900; 
             font-size: 2rem; 
@@ -108,11 +99,18 @@
             color: var(--text-color); border-radius: 15px; padding: 15px; height: auto;
         }
 
+        /* AANPASSING HIER: Gradient en animatie verwijderd, egale kleur toegevoegd */
         .btn-action { 
-            background: var(--cta-gradient); background-size: 200% 200%;
-            animation: liquidFlow 5s infinite; color: white; border: none; 
+            background-color: var(--main-color);
+            color: white; border: none; 
             border-radius: 20px; padding: 20px; font-weight: 800; font-size: 1.2rem; 
-            width: 100%; transition: 0.3s; margin-top: 30px;
+            width: 100%; transition: opacity 0.2s ease-in-out; margin-top: 30px;
+        }
+
+        /* Subtiel effect als je over de knop hoovert */
+        .btn-action:hover {
+            opacity: 0.9;
+            cursor: pointer;
         }
         
         .discord-btn {
